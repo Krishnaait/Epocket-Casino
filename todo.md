@@ -97,3 +97,6 @@
 
 - [x] Fix nested <a> tag error in poker game page
 - [x] Fix nested <a> tag error in Games page
+- [x] Add deep detailing to About page
+- [x] Add Vision section to About page
+- [x] Add deep detailing to How to Play page
