@@ -108,3 +108,4 @@
 - [x] Add deep detailing to Privacy Policy page
 - [x] Add deep detailing to Disclaimer page
 - [x] Add Home link to navigation menu in Header
+- [x] Add Home link to Quick Links section in Footer
