@@ -8,6 +8,7 @@ import { trpc } from "@/lib/trpc";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { toast } from "sonner";
 import { ArrowLeft, Volume2, VolumeX } from "lucide-react";
+import { soundManager } from "@/lib/sounds";
 
 const SYMBOLS = ["🍒", "🍋", "🍊", "💎", "7️⃣", "⭐"];
 const CARD_COST = 30;
@@ -69,8 +70,12 @@ export default function ScratchGame() {
     setWinAmount(0);
   };
 
-  const revealSquare = (index: number) => {
+  const handleScratch = (index: number) => {
     if (!playing || revealed[index]) return;
+
+    if (soundEnabled) {
+      soundManager.playScratch();
+    }
 
     const newRevealed = [...revealed];
     newRevealed[index] = true;
@@ -102,8 +107,14 @@ export default function ScratchGame() {
       await refetchCredits();
 
       if (win > 0) {
+        if (soundEnabled) {
+          soundManager.playWin();
+        }
         toast.success(`You won ${win} credits!`);
       } else {
+        if (soundEnabled) {
+          soundManager.playLose();
+        }
         toast.info("Try again!");
       }
     } catch (error) {

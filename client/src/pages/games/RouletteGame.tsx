@@ -8,6 +8,7 @@ import { trpc } from "@/lib/trpc";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { toast } from "sonner";
 import { ArrowLeft, Volume2, VolumeX } from "lucide-react";
+import { soundManager } from "@/lib/sounds";
 
 const NUMBERS = Array.from({ length: 37 }, (_, i) => i);
 const RED_NUMBERS = [1, 3, 5, 7, 9, 12, 14, 16, 18, 19, 21, 23, 25, 27, 30, 32, 34, 36];
@@ -90,6 +91,10 @@ export default function RouletteGame() {
     setSpinning(true);
     setWinningNumber(null);
 
+    if (soundEnabled) {
+      soundManager.playRouletteSpin();
+    }
+
     setTimeout(async () => {
       const result = Math.floor(Math.random() * 37);
       setWinningNumber(result);
@@ -107,8 +112,14 @@ export default function RouletteGame() {
         await refetchCredits();
 
         if (winnings > 0) {
+          if (soundEnabled) {
+            soundManager.playWin();
+          }
           toast.success(`Number ${result}! You won ${winnings} credits!`);
         } else {
+          if (soundEnabled) {
+            soundManager.playLose();
+          }
           toast.info(`Number ${result}. Better luck next time!`);
         }
       } catch (error) {

@@ -8,6 +8,7 @@ import { trpc } from "@/lib/trpc";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { toast } from "sonner";
 import { ArrowLeft, Volume2, VolumeX, Coins } from "lucide-react";
+import { soundManager } from "@/lib/sounds";
 
 const SYMBOLS = ["🍒", "🍋", "🍊", "🍇", "💎", "7️⃣", "⭐"];
 const SPIN_COST = 50;
@@ -54,6 +55,10 @@ export default function SlotsGame() {
     setSpinning(true);
     setLastWin(0);
 
+    if (soundEnabled) {
+      soundManager.playSpin();
+    }
+
     const spinDuration = 2000;
     const spinInterval = 100;
     const spinSteps = spinDuration / spinInterval;
@@ -96,8 +101,14 @@ export default function SlotsGame() {
       await refetchCredits();
 
       if (winAmount > 0) {
+        if (soundEnabled) {
+          soundManager.playWin();
+        }
         toast.success(`You won ${winAmount} credits!`);
       } else {
+        if (soundEnabled) {
+          soundManager.playLose();
+        }
         toast.info("Try again!");
       }
     } catch (error) {

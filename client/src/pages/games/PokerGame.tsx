@@ -8,6 +8,7 @@ import { trpc } from "@/lib/trpc";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { toast } from "sonner";
 import { ArrowLeft, Volume2, VolumeX } from "lucide-react";
+import { soundManager } from "@/lib/sounds";
 
 const SUITS = ["♠️", "♥️", "♣️", "♦️"];
 const RANKS = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
@@ -84,11 +85,15 @@ export default function PokerGame() {
     const deck = createDeck();
     const newHand = deck.slice(0, 5);
     setHand(newHand);
-    setHeld(new Array(5).fill(false));
+    setHeld([false, false, false, false, false]);
     setPlaying(true);
     setDealt(true);
     setWinAmount(0);
     setHandName("");
+
+    if (soundEnabled) {
+      soundManager.playDeal();
+    }
   };
 
   const toggleHold = (index: number) => {
@@ -100,6 +105,10 @@ export default function PokerGame() {
 
   const handleDraw = async () => {
     if (!playing) return;
+
+    if (soundEnabled) {
+      soundManager.playDeal();
+    }
 
     const deck = createDeck();
     const newHand = [...hand];
@@ -130,8 +139,14 @@ export default function PokerGame() {
       await refetchCredits();
 
       if (win > 0) {
+        if (soundEnabled) {
+          soundManager.playWin();
+        }
         toast.success(`${result.name}! You won ${win} credits!`);
       } else {
+        if (soundEnabled) {
+          soundManager.playLose();
+        }
         toast.info("No winning hand. Try again!");
       }
     } catch (error) {

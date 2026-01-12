@@ -110,3 +110,5 @@
 - [x] Add Home link to navigation menu in Header
 - [x] Add Home link to Quick Links section in Footer
 - [x] Change "About" to "About Us" in Header and Footer navigation
+- [x] Investigate and fix sound functionality in all games
+- [x] Implement actual sound effects for game actions
