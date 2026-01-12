@@ -43,7 +43,7 @@ export default function Games() {
                 <CardContent>
                   <CardDescription className="mb-4">{game.description}</CardDescription>
                   <Button asChild className="w-full">
-                    <Link href={`/play/${game.id}`}><a className="flex items-center justify-center"><Play className="w-4 h-4 mr-2" />Play</a></Link>
+                    <Link href={`/play/${game.id}`} className="flex items-center justify-center"><Play className="w-4 h-4 mr-2" />Play</Link>
                   </Button>
                 </CardContent>
               </Card>

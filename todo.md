@@ -96,3 +96,4 @@
 - [x] Integrate logo into header and branding
 
 - [x] Fix nested <a> tag error in poker game page
+- [x] Fix nested <a> tag error in Games page
