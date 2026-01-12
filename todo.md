@@ -94,3 +94,5 @@
 - [x] Generate EPOCKET brand logo
 - [x] Integrate banner image into homepage
 - [x] Integrate logo into header and branding
+
+- [x] Fix nested <a> tag error in poker game page

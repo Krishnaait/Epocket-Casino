@@ -133,7 +133,7 @@ export default function RouletteGame() {
         <div className="container max-w-6xl">
           <div className="mb-6 flex items-center justify-between">
             <Button asChild variant="outline">
-              <Link href="/games"><a className="flex items-center"><ArrowLeft className="w-4 h-4 mr-2" />Back</a></Link>
+              <Link href="/games" className="flex items-center"><ArrowLeft className="w-4 h-4 mr-2" />Back</Link>
             </Button>
             <Button variant="ghost" size="icon" onClick={() => setSoundEnabled(!soundEnabled)}>
               {soundEnabled ? <Volume2 className="w-5 h-5" /> : <VolumeX className="w-5 h-5" />}
