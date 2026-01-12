@@ -101,3 +101,4 @@
 - [x] Add Vision section to About page
 - [x] Add deep detailing to How to Play page
 - [x] Add Do's and Don'ts section to website
+- [x] Add automatic scroll-to-top on page navigation
