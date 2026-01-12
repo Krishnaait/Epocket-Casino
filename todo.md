@@ -84,3 +84,7 @@
 - [ ] Verify all animations work smoothly
 - [ ] Check all legal pages are accessible
 - [ ] Ensure sound toggles work in all games
+
+## Bug Fixes
+- [x] Fix nested <p> tag error in homepage
+- [x] Fix nested <a> tag error in homepage

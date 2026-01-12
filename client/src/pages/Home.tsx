@@ -31,16 +31,14 @@ export default function Home() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button asChild size="lg" className="text-lg px-8">
-                  <Link href="/games">
-                    <a className="flex items-center">
-                      <Play className="w-5 h-5 mr-2" />
-                      Start Playing Free
-                    </a>
+                  <Link href="/games" className="flex items-center">
+                    <Play className="w-5 h-5 mr-2" />
+                    Start Playing Free
                   </Link>
                 </Button>
                 <Button asChild size="lg" variant="outline" className="text-lg px-8">
                   <Link href="/how-to-play">
-                    <a>Learn How to Play</a>
+                    Learn How to Play
                   </Link>
                 </Button>
               </div>
@@ -135,7 +133,7 @@ export default function Home() {
                   </CardDescription>
                   <Button asChild className="w-full">
                     <Link href="/play/poker">
-                      <a>Play Now</a>
+                      Play Now
                     </Link>
                   </Button>
                 </CardContent>
@@ -151,7 +149,7 @@ export default function Home() {
                   </CardDescription>
                   <Button asChild className="w-full">
                     <Link href="/play/slots">
-                      <a>Play Now</a>
+                      Play Now
                     </Link>
                   </Button>
                 </CardContent>
@@ -167,7 +165,7 @@ export default function Home() {
                   </CardDescription>
                   <Button asChild className="w-full">
                     <Link href="/play/roulette">
-                      <a>Play Now</a>
+                      Play Now
                     </Link>
                   </Button>
                 </CardContent>
@@ -183,7 +181,7 @@ export default function Home() {
                   </CardDescription>
                   <Button asChild className="w-full">
                     <Link href="/play/scratch">
-                      <a>Play Now</a>
+                      Play Now
                     </Link>
                   </Button>
                 </CardContent>
@@ -355,7 +353,7 @@ export default function Home() {
             </ul>
             <Button asChild variant="outline" size="lg">
               <Link href="/responsible-gaming">
-                <a>Learn More About Responsible Gaming</a>
+                Learn More About Responsible Gaming
               </Link>
             </Button>
           </div>
@@ -369,11 +367,9 @@ export default function Home() {
               Join thousands of players enjoying free social casino games. No risk, no deposits, just pure fun!
             </p>
             <Button asChild size="lg" className="text-lg px-12">
-              <Link href="/games">
-                <a className="flex items-center">
-                  <Play className="w-5 h-5 mr-2" />
-                  Start Playing Now
-                </a>
+              <Link href="/games" className="flex items-center">
+                <Play className="w-5 h-5 mr-2" />
+                Start Playing Now
               </Link>
             </Button>
             <p className="text-sm text-muted-foreground">
