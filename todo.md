@@ -122,3 +122,5 @@
 - [x] Remove authentication checks from all pages and components
 - [x] Make all games and features work without login
 - [x] Use localStorage for guest user credit tracking
+- [x] Increase brand logo size in header for better visibility
+- [x] Improve logo contrast and styling
