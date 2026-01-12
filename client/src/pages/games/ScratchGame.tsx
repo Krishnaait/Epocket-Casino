@@ -53,11 +53,6 @@ export default function ScratchGame() {
   };
 
   const handleNewCard = () => {
-    if (!isAuthenticated) {
-      toast.error("Please sign in to play");
-      return;
-    }
-
     if (!credits || credits.credits < CARD_COST) {
       toast.error("Not enough credits!");
       return;

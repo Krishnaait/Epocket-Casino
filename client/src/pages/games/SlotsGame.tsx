@@ -40,11 +40,6 @@ export default function SlotsGame() {
   };
 
   const handleSpin = async () => {
-    if (!isAuthenticated) {
-      toast.error("Please sign in to play");
-      return;
-    }
-
     if (!credits || credits.credits < SPIN_COST) {
       toast.error("Not enough credits!");
       return;

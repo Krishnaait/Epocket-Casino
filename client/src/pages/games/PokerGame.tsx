@@ -72,11 +72,6 @@ export default function PokerGame() {
   };
 
   const handleDeal = () => {
-    if (!isAuthenticated) {
-      toast.error("Please sign in to play");
-      return;
-    }
-
     if (!credits || credits.credits < HAND_COST) {
       toast.error("Not enough credits!");
       return;

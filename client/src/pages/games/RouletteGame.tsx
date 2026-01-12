@@ -29,11 +29,6 @@ export default function RouletteGame() {
   const getTotalBet = () => Object.values(bets).reduce((sum, bet) => sum + bet, 0);
 
   const placeBet = (type: string, amount: number) => {
-    if (!isAuthenticated) {
-      toast.error("Please sign in to play");
-      return;
-    }
-
     if (!credits || credits.credits < amount) {
       toast.error("Not enough credits!");
       return;
@@ -72,11 +67,6 @@ export default function RouletteGame() {
   };
 
   const handleSpin = async () => {
-    if (!isAuthenticated) {
-      toast.error("Please sign in to play");
-      return;
-    }
-
     const totalBet = getTotalBet();
     if (totalBet === 0) {
       toast.error("Place your bets first!");

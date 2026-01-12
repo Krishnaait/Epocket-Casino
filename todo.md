@@ -125,3 +125,5 @@
 - [x] Increase brand logo size in header for better visibility
 - [x] Improve logo contrast and styling
 - [x] Fix age gate modal to appear consistently on first visit
+- [x] Remove "Please sign in to play" message from all games
+- [x] Make all games work without authentication for guest users
