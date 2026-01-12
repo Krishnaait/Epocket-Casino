@@ -4,12 +4,12 @@ import { Button } from "./ui/button";
 import { AlertCircle } from "lucide-react";
 
 export default function AgeGate() {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
 
   useEffect(() => {
     const ageVerified = localStorage.getItem("ageVerified");
-    if (!ageVerified) {
-      setOpen(true);
+    if (ageVerified) {
+      setOpen(false);
     }
   }, []);
 
@@ -23,7 +23,7 @@ export default function AgeGate() {
   };
 
   return (
-    <Dialog open={open} onOpenChange={() => {}}>
+    <Dialog open={open} onOpenChange={() => {}} modal={true}>
       <DialogContent className="sm:max-w-md" showCloseButton={false}>
         <DialogHeader>
           <div className="flex justify-center mb-4">

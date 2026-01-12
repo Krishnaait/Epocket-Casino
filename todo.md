@@ -124,3 +124,4 @@
 - [x] Use localStorage for guest user credit tracking
 - [x] Increase brand logo size in header for better visibility
 - [x] Improve logo contrast and styling
+- [x] Fix age gate modal to appear consistently on first visit
