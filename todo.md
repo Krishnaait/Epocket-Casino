@@ -127,3 +127,5 @@
 - [x] Fix age gate modal to appear consistently on first visit
 - [x] Remove "Please sign in to play" message from all games
 - [x] Make all games work without authentication for guest users
+- [x] Fix credit mismatch - games showing "Not enough credits" despite Header showing 1000 credits
+- [x] Make all games use localStorage credits instead of database credits for guest users

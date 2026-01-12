@@ -4,9 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { trpc } from "@/lib/trpc";
-import { useAuth } from "@/_core/hooks/useAuth";
 import { toast } from "sonner";
+import { getGuestCredits, updateGuestCredits } from "@/lib/guestCredits";
 import { ArrowLeft, Volume2, VolumeX, Coins } from "lucide-react";
 import { soundManager } from "@/lib/sounds";
 
@@ -14,11 +13,7 @@ const SYMBOLS = ["🍒", "🍋", "🍊", "🍇", "💎", "7️⃣", "⭐"];
 const SPIN_COST = 50;
 
 export default function SlotsGame() {
-  const { isAuthenticated } = useAuth();
-  const { data: credits, refetch: refetchCredits } = trpc.credits.get.useQuery(undefined, {
-    enabled: isAuthenticated,
-  });
-  const recordPlay = trpc.games.recordPlay.useMutation();
+  const [credits, setCredits] = useState(getGuestCredits());
 
   const [reels, setReels] = useState([SYMBOLS[0], SYMBOLS[0], SYMBOLS[0]]);
   const [spinning, setSpinning] = useState(false);
@@ -40,7 +35,8 @@ export default function SlotsGame() {
   };
 
   const handleSpin = async () => {
-    if (!credits || credits.credits < SPIN_COST) {
+    const currentCredits = getGuestCredits();
+    if (currentCredits.credits < SPIN_COST) {
       toast.error("Not enough credits!");
       return;
     }
@@ -49,6 +45,11 @@ export default function SlotsGame() {
 
     setSpinning(true);
     setLastWin(0);
+    
+    // Deduct credits
+    const updated = updateGuestCredits(SPIN_COST, 'subtract');
+    setCredits(updated);
+    window.dispatchEvent(new Event('creditsUpdated'));
 
     if (soundEnabled) {
       soundManager.playSpin();
@@ -85,29 +86,21 @@ export default function SlotsGame() {
     const winAmount = calculateWin(finalReels);
     setLastWin(winAmount);
 
-    try {
-      await recordPlay.mutateAsync({
-        gameType: "slots",
-        creditsWagered: SPIN_COST,
-        creditsWon: winAmount,
-        result: winAmount > 0 ? "win" : "loss",
-      });
-
-      await refetchCredits();
-
-      if (winAmount > 0) {
-        if (soundEnabled) {
-          soundManager.playWin();
-        }
-        toast.success(`You won ${winAmount} credits!`);
-      } else {
-        if (soundEnabled) {
-          soundManager.playLose();
-        }
-        toast.info("Try again!");
+    // Add winnings if any
+    if (winAmount > 0) {
+      const updated = updateGuestCredits(winAmount, 'add');
+      setCredits(updated);
+      window.dispatchEvent(new Event('creditsUpdated'));
+      
+      if (soundEnabled) {
+        soundManager.playWin();
       }
-    } catch (error) {
-      toast.error("Failed to record game");
+      toast.success(`You won ${winAmount} credits!`);
+    } else {
+      if (soundEnabled) {
+        soundManager.playLose();
+      }
+      toast.info("Try again!");
     }
 
     setSpinning(false);
@@ -152,7 +145,7 @@ export default function SlotsGame() {
                     <Coins className="w-5 h-5" />
                     <span>Cost: {SPIN_COST} credits</span>
                   </div>
-                  <Button size="lg" className="w-full md:w-auto px-12" onClick={handleSpin} disabled={spinning || !isAuthenticated || !credits || credits.credits < SPIN_COST}>
+                  <Button size="lg" className="w-full md:w-auto px-12" onClick={handleSpin} disabled={spinning || credits.credits < SPIN_COST}>
                     {spinning ? "Spinning..." : "SPIN"}
                   </Button>
                 </div>

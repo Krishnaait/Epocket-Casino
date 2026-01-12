@@ -4,9 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { trpc } from "@/lib/trpc";
-import { useAuth } from "@/_core/hooks/useAuth";
 import { toast } from "sonner";
+import { getGuestCredits, updateGuestCredits } from "@/lib/guestCredits";
 import { ArrowLeft, Volume2, VolumeX } from "lucide-react";
 import { soundManager } from "@/lib/sounds";
 
@@ -17,11 +16,7 @@ const HAND_COST = 100;
 type CardType = { rank: string; suit: string };
 
 export default function PokerGame() {
-  const { isAuthenticated } = useAuth();
-  const { data: credits, refetch: refetchCredits } = trpc.credits.get.useQuery(undefined, {
-    enabled: isAuthenticated,
-  });
-  const recordPlay = trpc.games.recordPlay.useMutation();
+  const [credits, setCredits] = useState(getGuestCredits());
 
   const [hand, setHand] = useState<CardType[]>([]);
   const [held, setHeld] = useState<boolean[]>([]);
@@ -72,7 +67,8 @@ export default function PokerGame() {
   };
 
   const handleDeal = () => {
-    if (!credits || credits.credits < HAND_COST) {
+    const currentCredits = getGuestCredits();
+    if (currentCredits.credits < HAND_COST) {
       toast.error("Not enough credits!");
       return;
     }
@@ -85,6 +81,11 @@ export default function PokerGame() {
     setDealt(true);
     setWinAmount(0);
     setHandName("");
+    
+    // Deduct credits
+    const updated = updateGuestCredits(HAND_COST, 'subtract');
+    setCredits(updated);
+    window.dispatchEvent(new Event('creditsUpdated'));
 
     if (soundEnabled) {
       soundManager.playDeal();
@@ -123,29 +124,21 @@ export default function PokerGame() {
     setWinAmount(win);
     setHandName(result.name);
 
-    try {
-      await recordPlay.mutateAsync({
-        gameType: "poker",
-        creditsWagered: HAND_COST,
-        creditsWon: win,
-        result: win > 0 ? "win" : "loss",
-      });
-
-      await refetchCredits();
-
-      if (win > 0) {
-        if (soundEnabled) {
-          soundManager.playWin();
-        }
-        toast.success(`${result.name}! You won ${win} credits!`);
-      } else {
-        if (soundEnabled) {
-          soundManager.playLose();
-        }
-        toast.info("No winning hand. Try again!");
+    // Add winnings if any
+    if (win > 0) {
+      const updated = updateGuestCredits(win, 'add');
+      setCredits(updated);
+      window.dispatchEvent(new Event('creditsUpdated'));
+      
+      if (soundEnabled) {
+        soundManager.playWin();
       }
-    } catch (error) {
-      toast.error("Failed to record game");
+      toast.success(`${result.name}! You won ${win} credits!`);
+    } else {
+      if (soundEnabled) {
+        soundManager.playLose();
+      }
+      toast.info("No winning hand. Try again!");
     }
 
     setPlaying(false);
@@ -217,7 +210,7 @@ export default function PokerGame() {
 
               <div className="text-center space-y-4">
                 {!playing && (
-                  <Button size="lg" onClick={handleDeal} disabled={!isAuthenticated || !credits || credits.credits < HAND_COST}>
+                  <Button size="lg" onClick={handleDeal} disabled={credits.credits < HAND_COST}>
                     Deal ({HAND_COST} credits)
                   </Button>
                 )}

@@ -4,9 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { trpc } from "@/lib/trpc";
-import { useAuth } from "@/_core/hooks/useAuth";
 import { toast } from "sonner";
+import { getGuestCredits, updateGuestCredits } from "@/lib/guestCredits";
 import { ArrowLeft, Volume2, VolumeX } from "lucide-react";
 import { soundManager } from "@/lib/sounds";
 
@@ -14,11 +13,7 @@ const SYMBOLS = ["🍒", "🍋", "🍊", "💎", "7️⃣", "⭐"];
 const CARD_COST = 30;
 
 export default function ScratchGame() {
-  const { isAuthenticated } = useAuth();
-  const { data: credits, refetch: refetchCredits } = trpc.credits.get.useQuery(undefined, {
-    enabled: isAuthenticated,
-  });
-  const recordPlay = trpc.games.recordPlay.useMutation();
+  const [credits, setCredits] = useState(getGuestCredits());
 
   const [card, setCard] = useState<string[]>([]);
   const [revealed, setRevealed] = useState<boolean[]>([]);
@@ -53,7 +48,8 @@ export default function ScratchGame() {
   };
 
   const handleNewCard = () => {
-    if (!credits || credits.credits < CARD_COST) {
+    const currentCredits = getGuestCredits();
+    if (currentCredits.credits < CARD_COST) {
       toast.error("Not enough credits!");
       return;
     }
@@ -63,6 +59,11 @@ export default function ScratchGame() {
     setRevealed(new Array(9).fill(false));
     setPlaying(true);
     setWinAmount(0);
+    
+    // Deduct credits
+    const updated = updateGuestCredits(CARD_COST, 'subtract');
+    setCredits(updated);
+    window.dispatchEvent(new Event('creditsUpdated'));
   };
 
   const handleScratch = (index: number) => {
@@ -91,29 +92,21 @@ export default function ScratchGame() {
     const win = calculateWin(card);
     setWinAmount(win);
 
-    try {
-      await recordPlay.mutateAsync({
-        gameType: "scratch",
-        creditsWagered: CARD_COST,
-        creditsWon: win,
-        result: win > 0 ? "win" : "loss",
-      });
-
-      await refetchCredits();
-
-      if (win > 0) {
-        if (soundEnabled) {
-          soundManager.playWin();
-        }
-        toast.success(`You won ${win} credits!`);
-      } else {
-        if (soundEnabled) {
-          soundManager.playLose();
-        }
-        toast.info("Try again!");
+    // Add winnings if any
+    if (win > 0) {
+      const updated = updateGuestCredits(win, 'add');
+      setCredits(updated);
+      window.dispatchEvent(new Event('creditsUpdated'));
+      
+      if (soundEnabled) {
+        soundManager.playWin();
       }
-    } catch (error) {
-      toast.error("Failed to record game");
+      toast.success(`You won ${win} credits!`);
+    } else {
+      if (soundEnabled) {
+        soundManager.playLose();
+      }
+      toast.info("Try again!");
     }
 
     setPlaying(false);
@@ -187,7 +180,7 @@ export default function ScratchGame() {
               </div>
 
               <div className="text-center">
-                <Button size="lg" onClick={handleNewCard} disabled={playing || !isAuthenticated || !credits || credits.credits < CARD_COST}>
+                <Button size="lg" onClick={handleNewCard} disabled={playing || credits.credits < CARD_COST}>
                   New Card ({CARD_COST} credits)
                 </Button>
               </div>

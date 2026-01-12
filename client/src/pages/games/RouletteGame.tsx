@@ -4,9 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { trpc } from "@/lib/trpc";
-import { useAuth } from "@/_core/hooks/useAuth";
 import { toast } from "sonner";
+import { getGuestCredits, updateGuestCredits } from "@/lib/guestCredits";
 import { ArrowLeft, Volume2, VolumeX } from "lucide-react";
 import { soundManager } from "@/lib/sounds";
 
@@ -15,11 +14,7 @@ const RED_NUMBERS = [1, 3, 5, 7, 9, 12, 14, 16, 18, 19, 21, 23, 25, 27, 30, 32, 
 const BLACK_NUMBERS = [2, 4, 6, 8, 10, 11, 13, 15, 17, 20, 22, 24, 26, 28, 29, 31, 33, 35];
 
 export default function RouletteGame() {
-  const { isAuthenticated } = useAuth();
-  const { data: credits, refetch: refetchCredits } = trpc.credits.get.useQuery(undefined, {
-    enabled: isAuthenticated,
-  });
-  const recordPlay = trpc.games.recordPlay.useMutation();
+  const [credits, setCredits] = useState(getGuestCredits());
 
   const [bets, setBets] = useState<Record<string, number>>({});
   const [spinning, setSpinning] = useState(false);
@@ -29,7 +24,8 @@ export default function RouletteGame() {
   const getTotalBet = () => Object.values(bets).reduce((sum, bet) => sum + bet, 0);
 
   const placeBet = (type: string, amount: number) => {
-    if (!credits || credits.credits < amount) {
+    const currentCredits = getGuestCredits();
+    if (currentCredits.credits < amount) {
       toast.error("Not enough credits!");
       return;
     }
@@ -73,13 +69,19 @@ export default function RouletteGame() {
       return;
     }
 
-    if (!credits || credits.credits < totalBet) {
+    const currentCredits = getGuestCredits();
+    if (currentCredits.credits < totalBet) {
       toast.error("Not enough credits!");
       return;
     }
 
     setSpinning(true);
     setWinningNumber(null);
+    
+    // Deduct credits
+    const updated = updateGuestCredits(totalBet, 'subtract');
+    setCredits(updated);
+    window.dispatchEvent(new Event('creditsUpdated'));
 
     if (soundEnabled) {
       soundManager.playRouletteSpin();
@@ -91,29 +93,21 @@ export default function RouletteGame() {
 
       const winnings = calculateWinnings(result);
 
-      try {
-        await recordPlay.mutateAsync({
-          gameType: "roulette",
-          creditsWagered: totalBet,
-          creditsWon: winnings,
-          result: winnings > 0 ? "win" : "loss",
-        });
-
-        await refetchCredits();
-
-        if (winnings > 0) {
-          if (soundEnabled) {
-            soundManager.playWin();
-          }
-          toast.success(`Number ${result}! You won ${winnings} credits!`);
-        } else {
-          if (soundEnabled) {
-            soundManager.playLose();
-          }
-          toast.info(`Number ${result}. Better luck next time!`);
+      // Add winnings if any
+      if (winnings > 0) {
+        const updated = updateGuestCredits(winnings, 'add');
+        setCredits(updated);
+        window.dispatchEvent(new Event('creditsUpdated'));
+        
+        if (soundEnabled) {
+          soundManager.playWin();
         }
-      } catch (error) {
-        toast.error("Failed to record game");
+        toast.success(`Number ${result}! You won ${winnings} credits!`);
+      } else {
+        if (soundEnabled) {
+          soundManager.playLose();
+        }
+        toast.info(`Number ${result}. Better luck next time!`);
       }
 
       setSpinning(false);
