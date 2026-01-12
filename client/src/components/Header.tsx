@@ -17,9 +17,7 @@ export default function Header() {
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <nav className="container flex h-16 items-center justify-between">
         <Link href="/" className="flex items-center space-x-2">
-          <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-primary/10 border border-primary/20">
-            <Coins className="w-6 h-6 text-primary" />
-          </div>
+          <img src="/logo.png" alt="EPOCKET Logo" className="w-10 h-10" />
           <span className="font-bold text-xl">EPOCKET</span>
         </Link>
 
