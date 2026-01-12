@@ -23,6 +23,9 @@ export default function Header() {
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-6">
+          <Link href="/" className="text-sm font-medium hover:text-primary transition-colors">
+            Home
+          </Link>
           <Link href="/games" className="text-sm font-medium hover:text-primary transition-colors">
             Games
           </Link>
@@ -74,6 +77,9 @@ export default function Header() {
                 <span className="font-bold text-primary">{credits.credits.toLocaleString()}</span>
               </div>
             )}
+            <Link href="/" className="block py-2 text-sm font-medium hover:text-primary transition-colors">
+              Home
+            </Link>
             <Link href="/games" className="block py-2 text-sm font-medium hover:text-primary transition-colors">
               Games
             </Link>
