@@ -118,3 +118,7 @@
 - [x] Fix top-up button error by creating new endpoint for low credits
 - [x] Update Header to use new top-up endpoint instead of reset
 - [x] Fix undefined revealSquare function error in ScratchGame
+- [x] Remove Sign In button from Header component
+- [x] Remove authentication checks from all pages and components
+- [x] Make all games and features work without login
+- [x] Use localStorage for guest user credit tracking
