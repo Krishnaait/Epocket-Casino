@@ -112,3 +112,6 @@
 - [x] Change "About" to "About Us" in Header and Footer navigation
 - [x] Investigate and fix sound functionality in all games
 - [x] Implement actual sound effects for game actions
+- [x] Add Free Credit Top-Up button when credits are low or zero
+- [x] Implement top-up functionality in Header component
+- [x] Show top-up button in all game pages when credits run out
