@@ -190,6 +190,29 @@ export async function resetCredits(userId: number) {
   return await getUserCredits(userId);
 }
 
+export async function topUpCredits(userId: number) {
+  const db = await getDb();
+  if (!db) return null;
+
+  const current = await getUserCredits(userId);
+  if (!current) return null;
+
+  // Only allow top-up if credits are below 100
+  if (current.credits >= 100) {
+    throw new Error("Cannot top up when credits are 100 or more");
+  }
+
+  // Add 500 credits
+  await db.update(userCredits)
+    .set({ 
+      credits: current.credits + 500,
+      totalEarned: current.totalEarned + 500
+    })
+    .where(eq(userCredits.userId, userId));
+
+  return await getUserCredits(userId);
+}
+
 // Achievement Functions
 
 export async function getAllAchievements() {

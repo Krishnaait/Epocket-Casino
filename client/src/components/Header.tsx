@@ -12,11 +12,11 @@ export default function Header() {
   const { data: credits, refetch: refetchCredits } = trpc.credits.get.useQuery(undefined, {
     enabled: isAuthenticated,
   });
-  const resetCredits = trpc.credits.reset.useMutation();
+  const topUpCredits = trpc.credits.topUp.useMutation();
 
   const handleTopUp = async () => {
     try {
-      await resetCredits.mutateAsync();
+      await topUpCredits.mutateAsync();
       await refetchCredits();
     } catch (error) {
       console.error("Failed to top up credits", error);
@@ -67,7 +67,7 @@ export default function Header() {
                   variant="default"
                   size="sm"
                   className="flex items-center space-x-2"
-                  disabled={resetCredits.isPending}
+                  disabled={topUpCredits.isPending}
                 >
                   <Gift className="w-4 h-4" />
                   <span>Free Top-Up</span>
@@ -107,7 +107,7 @@ export default function Header() {
                     variant="default"
                     size="sm"
                     className="w-full flex items-center justify-center space-x-2"
-                    disabled={resetCredits.isPending}
+                    disabled={topUpCredits.isPending}
                   >
                     <Gift className="w-4 h-4" />
                     <span>Free Top-Up (500 Credits)</span>

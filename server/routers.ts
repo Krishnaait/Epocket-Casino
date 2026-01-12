@@ -55,6 +55,11 @@ export const appRouter = router({
       return await db.resetCredits(ctx.user.id);
     }),
 
+    // Top up credits when below 100 (adds 500 credits)
+    topUp: protectedProcedure.mutation(async ({ ctx }) => {
+      return await db.topUpCredits(ctx.user.id);
+    }),
+
     // Update credits (used internally by games)
     update: protectedProcedure
       .input(z.object({
