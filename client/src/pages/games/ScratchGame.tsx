@@ -155,7 +155,7 @@ export default function ScratchGame() {
                       {card.map((symbol, index) => (
                         <button
                           key={index}
-                          onClick={() => revealSquare(index)}
+                          onClick={() => handleScratch(index)}
                           disabled={!playing || revealed[index]}
                           className={`aspect-square rounded-lg flex items-center justify-center text-4xl md:text-5xl font-bold transition-all ${
                             revealed[index]

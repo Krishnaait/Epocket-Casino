@@ -117,3 +117,4 @@
 - [x] Show top-up button in all game pages when credits run out
 - [x] Fix top-up button error by creating new endpoint for low credits
 - [x] Update Header to use new top-up endpoint instead of reset
+- [x] Fix undefined revealSquare function error in ScratchGame
