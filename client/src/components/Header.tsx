@@ -36,7 +36,7 @@ export default function Header() {
             Achievements
           </Link>
           <Link href="/about" className="text-sm font-medium hover:text-primary transition-colors">
-            About
+            About Us
           </Link>
           <Link href="/faq" className="text-sm font-medium hover:text-primary transition-colors">
             FAQ
@@ -90,7 +90,7 @@ export default function Header() {
               Achievements
             </Link>
             <Link href="/about" className="block py-2 text-sm font-medium hover:text-primary transition-colors">
-              About
+              About Us
             </Link>
             <Link href="/faq" className="block py-2 text-sm font-medium hover:text-primary transition-colors">
               FAQ

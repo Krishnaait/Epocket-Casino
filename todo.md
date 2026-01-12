@@ -109,3 +109,4 @@
 - [x] Add deep detailing to Disclaimer page
 - [x] Add Home link to navigation menu in Header
 - [x] Add Home link to Quick Links section in Footer
+- [x] Change "About" to "About Us" in Header and Footer navigation
