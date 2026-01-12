@@ -104,3 +104,6 @@
 - [x] Add automatic scroll-to-top on page navigation
 - [x] Add deep detailing to Responsible Gaming page
 - [x] Add deep detailing to FAQ page
+- [x] Add deep detailing to Terms & Conditions page
+- [x] Add deep detailing to Privacy Policy page
+- [x] Add deep detailing to Disclaimer page
