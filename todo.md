@@ -100,3 +100,4 @@
 - [x] Add deep detailing to About page
 - [x] Add Vision section to About page
 - [x] Add deep detailing to How to Play page
+- [x] Add Do's and Don'ts section to website

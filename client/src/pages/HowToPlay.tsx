@@ -590,6 +590,213 @@ export default function HowToPlay() {
             </CardContent>
           </Card>
 
+          {/* Do's and Don'ts */}
+          <Card className="mt-8 border-2 border-primary/30">
+            <CardHeader>
+              <CardTitle className="text-2xl flex items-center gap-2">
+                <Info className="w-6 h-6" />
+                Do's and Don'ts for Responsible Gaming
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-muted-foreground mb-6 leading-relaxed">
+                EPOCKET Social Casino is designed for entertainment only. Follow these guidelines to ensure you have a fun, safe, and responsible gaming experience.
+              </p>
+              <div className="grid md:grid-cols-2 gap-6">
+                {/* DO's Column */}
+                <div className="space-y-4">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                      <span className="text-2xl">✓</span>
+                    </div>
+                    <h3 className="text-xl font-bold text-primary">DO's</h3>
+                  </div>
+                  
+                  <div className="space-y-4">
+                    <div className="p-4 bg-primary/5 rounded-lg border border-primary/20">
+                      <h4 className="font-bold mb-2 flex items-center gap-2">
+                        <span className="text-primary">✓</span>
+                        Play for Fun and Entertainment
+                      </h4>
+                      <p className="text-sm text-muted-foreground">
+                        Remember that EPOCKET is purely for enjoyment. Treat it as a leisure activity, not a way to make money or solve financial problems.
+                      </p>
+                    </div>
+
+                    <div className="p-4 bg-primary/5 rounded-lg border border-primary/20">
+                      <h4 className="font-bold mb-2 flex items-center gap-2">
+                        <span className="text-primary">✓</span>
+                        Set Time Limits
+                      </h4>
+                      <p className="text-sm text-muted-foreground">
+                        Decide how long you want to play before you start. Take regular breaks and balance gaming with other activities in your life.
+                      </p>
+                    </div>
+
+                    <div className="p-4 bg-primary/5 rounded-lg border border-primary/20">
+                      <h4 className="font-bold mb-2 flex items-center gap-2">
+                        <span className="text-primary">✓</span>
+                        Understand the Games
+                      </h4>
+                      <p className="text-sm text-muted-foreground">
+                        Read the rules and paytables before playing. Knowing how each game works helps you make informed decisions and enjoy the experience more.
+                      </p>
+                    </div>
+
+                    <div className="p-4 bg-primary/5 rounded-lg border border-primary/20">
+                      <h4 className="font-bold mb-2 flex items-center gap-2">
+                        <span className="text-primary">✓</span>
+                        Claim Your Daily Bonus
+                      </h4>
+                      <p className="text-sm text-muted-foreground">
+                        Sign in daily to receive 200 free bonus credits. This helps you keep playing without worrying about running out of virtual coins.
+                      </p>
+                    </div>
+
+                    <div className="p-4 bg-primary/5 rounded-lg border border-primary/20">
+                      <h4 className="font-bold mb-2 flex items-center gap-2">
+                        <span className="text-primary">✓</span>
+                        Use the Reset Button
+                      </h4>
+                      <p className="text-sm text-muted-foreground">
+                        If you run out of credits, use the reset button to get 500 more. There's no shame in starting fresh—it's all virtual!
+                      </p>
+                    </div>
+
+                    <div className="p-4 bg-primary/5 rounded-lg border border-primary/20">
+                      <h4 className="font-bold mb-2 flex items-center gap-2">
+                        <span className="text-primary">✓</span>
+                        Enjoy the Social Features
+                      </h4>
+                      <p className="text-sm text-muted-foreground">
+                        Check the leaderboard, unlock achievements, and compete with other players. The social aspect makes gaming more enjoyable.
+                      </p>
+                    </div>
+
+                    <div className="p-4 bg-primary/5 rounded-lg border border-primary/20">
+                      <h4 className="font-bold mb-2 flex items-center gap-2">
+                        <span className="text-primary">✓</span>
+                        Remember It's Not Real Money
+                      </h4>
+                      <p className="text-sm text-muted-foreground">
+                        Virtual credits have zero real-world value. You're playing with imaginary coins for entertainment, not actual currency.
+                      </p>
+                    </div>
+
+                    <div className="p-4 bg-primary/5 rounded-lg border border-primary/20">
+                      <h4 className="font-bold mb-2 flex items-center gap-2">
+                        <span className="text-primary">✓</span>
+                        Share Responsibly
+                      </h4>
+                      <p className="text-sm text-muted-foreground">
+                        If you share your achievements or wins on social media, always include disclaimers that this is free-to-play entertainment only.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* DON'T's Column */}
+                <div className="space-y-4">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 rounded-full bg-destructive/20 flex items-center justify-center flex-shrink-0">
+                      <span className="text-2xl">✗</span>
+                    </div>
+                    <h3 className="text-xl font-bold text-destructive">DON'Ts</h3>
+                  </div>
+                  
+                  <div className="space-y-4">
+                    <div className="p-4 bg-destructive/5 rounded-lg border border-destructive/20">
+                      <h4 className="font-bold mb-2 flex items-center gap-2">
+                        <span className="text-destructive">✗</span>
+                        Don't Treat It Like Real Gambling
+                      </h4>
+                      <p className="text-sm text-muted-foreground">
+                        EPOCKET is NOT real money gambling. Never confuse virtual credits with actual money or think you can profit from playing.
+                      </p>
+                    </div>
+
+                    <div className="p-4 bg-destructive/5 rounded-lg border border-destructive/20">
+                      <h4 className="font-bold mb-2 flex items-center gap-2">
+                        <span className="text-destructive">✗</span>
+                        Don't Spend Real Money
+                      </h4>
+                      <p className="text-sm text-muted-foreground">
+                        You never need to pay anything to play EPOCKET. If anyone asks you for money claiming it's related to this platform, it's a scam.
+                      </p>
+                    </div>
+
+                    <div className="p-4 bg-destructive/5 rounded-lg border border-destructive/20">
+                      <h4 className="font-bold mb-2 flex items-center gap-2">
+                        <span className="text-destructive">✗</span>
+                        Don't Play If Under 18
+                      </h4>
+                      <p className="text-sm text-muted-foreground">
+                        EPOCKET requires users to be 18 years or older. Even though no real money is involved, age restrictions apply for responsible gaming.
+                      </p>
+                    </div>
+
+                    <div className="p-4 bg-destructive/5 rounded-lg border border-destructive/20">
+                      <h4 className="font-bold mb-2 flex items-center gap-2">
+                        <span className="text-destructive">✗</span>
+                        Don't Chase Losses
+                      </h4>
+                      <p className="text-sm text-muted-foreground">
+                        If you lose virtual credits, don't keep playing to "win them back." Take a break, use the reset button, or come back tomorrow.
+                      </p>
+                    </div>
+
+                    <div className="p-4 bg-destructive/5 rounded-lg border border-destructive/20">
+                      <h4 className="font-bold mb-2 flex items-center gap-2">
+                        <span className="text-destructive">✗</span>
+                        Don't Neglect Real Life
+                      </h4>
+                      <p className="text-sm text-muted-foreground">
+                        Gaming should never interfere with work, relationships, health, or other important responsibilities. Balance is key.
+                      </p>
+                    </div>
+
+                    <div className="p-4 bg-destructive/5 rounded-lg border border-destructive/20">
+                      <h4 className="font-bold mb-2 flex items-center gap-2">
+                        <span className="text-destructive">✗</span>
+                        Don't Try to Sell or Trade Credits
+                      </h4>
+                      <p className="text-sm text-muted-foreground">
+                        Virtual credits cannot be exchanged, sold, or traded for anything of real value. Any attempt to do so violates our terms of service.
+                      </p>
+                    </div>
+
+                    <div className="p-4 bg-destructive/5 rounded-lg border border-destructive/20">
+                      <h4 className="font-bold mb-2 flex items-center gap-2">
+                        <span className="text-destructive">✗</span>
+                        Don't Use It as Practice for Real Gambling
+                      </h4>
+                      <p className="text-sm text-muted-foreground">
+                        EPOCKET is entertainment only. Don't use it to develop strategies for real money gambling, as the dynamics are completely different.
+                      </p>
+                    </div>
+
+                    <div className="p-4 bg-destructive/5 rounded-lg border border-destructive/20">
+                      <h4 className="font-bold mb-2 flex items-center gap-2">
+                        <span className="text-destructive">✗</span>
+                        Don't Share Your Account
+                      </h4>
+                      <p className="text-sm text-muted-foreground">
+                        Keep your login credentials private. Sharing accounts can lead to loss of progress, achievements, and daily bonuses.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-8 p-6 bg-gradient-to-r from-destructive/10 to-primary/10 border-2 border-destructive/30 rounded-lg">
+                <h4 className="font-bold text-lg mb-3 text-center">⚠️ Important Reminder</h4>
+                <p className="text-center text-muted-foreground leading-relaxed">
+                  EPOCKET Social Casino is a <strong className="text-foreground">free-to-play entertainment platform</strong> designed for fun, not profit. Virtual credits have <strong className="text-destructive">absolutely no real-world monetary value</strong> and cannot be exchanged for cash, prizes, or anything of value. If you or someone you know has a gambling problem, please seek help from professional organizations like the National Council on Problem Gambling.
+                </p>
+              </div>
+            </CardContent>
+          </Card>
+
           {/* Need Help */}
           <Card className="mt-8 bg-gradient-to-br from-primary/5 to-secondary/5">
             <CardHeader>
