@@ -129,3 +129,10 @@
 - [x] Make all games work without authentication for guest users
 - [x] Fix credit mismatch - games showing "Not enough credits" despite Header showing 1000 credits
 - [x] Make all games use localStorage credits instead of database credits for guest users
+
+## Remove Manus Dependencies
+- [x] Remove all Manus authentication and OAuth references
+- [x] Remove tRPC and server-side dependencies
+- [x] Remove Manus-specific environment variables
+- [x] Clean up package.json dependencies
+- [x] Ensure website works completely standalone
