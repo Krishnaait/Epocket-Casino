@@ -138,7 +138,7 @@
 - [x] Ensure website works completely standalone
 
 ## SEO & Performance Optimization
-- [ ] Convert all images to WebP format for better performance
-- [ ] Create robots.txt file for search engine crawlers
-- [ ] Create sitemap.xml with all website pages
-- [ ] Push updated code to GitHub repository
+- [x] Convert all images to WebP format for better performance
+- [x] Create robots.txt file for search engine crawlers
+- [x] Create sitemap.xml with all website pages
+- [x] Push updated code to GitHub repository
