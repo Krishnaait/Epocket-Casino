@@ -142,3 +142,9 @@
 - [x] Create robots.txt file for search engine crawlers
 - [x] Create sitemap.xml with all website pages
 - [x] Push updated code to GitHub repository
+
+## Deployment Fix
+- [ ] Fix pnpm-lock.yaml mismatch with package.json causing deployment failures
+- [ ] Regenerate lockfile to match current dependencies
+- [ ] Test build process to ensure it works
+- [ ] Push fixed code to GitHub
