@@ -1,0 +1,14 @@
+# robots.txt for EPOCKET Social Casino
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://epocket-casino.com/sitemap.xml
+
+# Crawl-delay (optional, helps prevent server overload)
+Crawl-delay: 1
+
+# Disallow sensitive or duplicate content (if any)
+# Disallow: /admin/
+# Disallow: /private/

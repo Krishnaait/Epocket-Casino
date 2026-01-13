@@ -16,7 +16,7 @@ export default function Home() {
       <main className="flex-1">
         {/* Hero Section */}
         <section className="relative py-20 md:py-32 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-secondary/10 to-background" style={{ backgroundImage: 'url(/banner-bg.png)', backgroundSize: 'cover', backgroundPosition: 'center' }} />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-secondary/10 to-background" style={{ backgroundImage: 'url(/banner-bg.webp)', backgroundSize: 'cover', backgroundPosition: 'center' }} />
           <div className="absolute inset-0 bg-background/40" />
           <div className="container relative z-10">
             <div className="max-w-3xl mx-auto text-center space-y-8">

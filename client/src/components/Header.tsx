@@ -37,7 +37,7 @@ export default function Header() {
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <nav className="container flex h-16 items-center justify-between">
         <Link href="/" className="flex items-center space-x-3">
-          <img src="/logo.png" alt="EPOCKET Logo" className="w-12 h-12 sm:w-14 sm:h-14" />
+          <img src="/logo.webp" alt="EPOCKET Logo" className="w-12 h-12 sm:w-14 sm:h-14" />
           <span className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-primary via-purple-500 to-primary bg-clip-text text-transparent">
             EPOCKET
           </span>

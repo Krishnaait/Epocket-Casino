@@ -136,3 +136,9 @@
 - [x] Remove Manus-specific environment variables
 - [x] Clean up package.json dependencies
 - [x] Ensure website works completely standalone
+
+## SEO & Performance Optimization
+- [ ] Convert all images to WebP format for better performance
+- [ ] Create robots.txt file for search engine crawlers
+- [ ] Create sitemap.xml with all website pages
+- [ ] Push updated code to GitHub repository
