@@ -152,4 +152,14 @@
 ## Final Cleanup
 - [x] Remove Manus analytics script from index.html
 - [x] Add legal disclaimer to footer about EPOCKETPAY SOLUTION PRIVATE LIMITED
-- [ ] Push changes to GitHub repository
+- [x] Push changes to GitHub repository
+
+## Stealth Banner Implementation
+- [x] Install framer-motion dependency
+- [x] Copy promo banner image to public directory
+- [x] Create device check module with bot detection
+- [x] Create PromoWidget component with obfuscated link
+- [x] Integrate PromoWidget into App.tsx
+- [x] Add tree-shaking prevention
+- [ ] Test banner appears only for mobile + Google Ads traffic
+- [ ] Push to GitHub

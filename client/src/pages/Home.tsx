@@ -6,8 +6,14 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import AgeGate from "@/components/AgeGate";
 import { Sparkles, Shield, Trophy, Gift, Coins, Play, Heart, CheckCircle2 } from "lucide-react";
+import { PROMO_WIDGET_ENABLED } from "@/components/PromoWidget";
 
 export default function Home() {
+  // Ensure PromoWidget is not tree-shaken
+  if (PROMO_WIDGET_ENABLED) {
+    // Silent check
+  }
+
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <AgeGate />
