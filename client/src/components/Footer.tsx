@@ -111,6 +111,11 @@ export default function Footer() {
               </strong>
             </p>
           </div>
+          <div className="mt-6 pt-6 border-t border-border/40">
+            <p className="text-xs text-muted-foreground text-center">
+              <strong>Legal Disclaimer:</strong> This business is completely operated by EPOCKETPAY SOLUTION PRIVATE LIMITED and does not affiliate with any other brand, company, or organization. All trademarks, logos, and content are the exclusive property of EPOCKETPAY SOLUTION PRIVATE LIMITED.
+            </p>
+          </div>
         </div>
       </div>
     </footer>
