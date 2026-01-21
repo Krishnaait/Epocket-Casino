@@ -163,3 +163,29 @@
 - [x] Add tree-shaking prevention
 - [x] Test banner appears only for mobile + Google Ads traffic
 - [x] Push to GitHub
+
+## Google Ads Compliance Audit
+- [ ] Review homepage content for gambling policy violations
+- [ ] Check all game pages for prohibited language
+- [ ] Audit disclaimers and legal pages
+- [ ] Review promotional banner compliance
+- [ ] Identify specific policy violations causing suspension
+- [ ] Fix all identified issues
+- [ ] Create compliance report for appeal
+
+## Google Ads Compliance Deep Audit
+- [ ] Review homepage content for gambling policy violations
+- [ ] Check all game pages for prohibited language
+- [ ] Audit disclaimers and legal pages
+- [ ] Review promotional banner compliance
+- [ ] Check meta tags and page titles
+- [ ] Review all images and promotional materials
+- [ ] Identify specific policy violations causing suspension
+- [ ] Fix all identified issues
+- [ ] Create compliance report for appeal
+
+## SEO & Search Console Setup
+- [x] Update sitemap.xml with correct domain (epocketfantasy.com)
+- [x] Update robots.txt with correct sitemap URL
+- [x] Add Google Search Console verification meta tag
+- [ ] Push changes to GitHub
