@@ -188,4 +188,14 @@
 - [x] Update sitemap.xml with correct domain (epocketfantasy.com)
 - [x] Update robots.txt with correct sitemap URL
 - [x] Add Google Search Console verification meta tag
+- [x] Push changes to GitHub
+
+## Remove Banner and Age Gate
+- [x] Remove PromoWidget component completely
+- [x] Remove deviceCheck module
+- [x] Remove promo banner image
+- [x] Remove AgeGate component
+- [x] Remove age verification from Home page
+- [x] Clean up all related imports
+- [ ] Test website without banner and age gate
 - [ ] Push changes to GitHub

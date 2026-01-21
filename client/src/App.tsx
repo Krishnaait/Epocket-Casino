@@ -21,7 +21,7 @@ import PokerGame from "./pages/games/PokerGame";
 import SlotsGame from "./pages/games/SlotsGame";
 import RouletteGame from "./pages/games/RouletteGame";
 import ScratchGame from "./pages/games/ScratchGame";
-import { PromoWidget } from "./components/PromoWidget";
+
 
 function Router() {
   return (
@@ -55,8 +55,7 @@ function App() {
         <TooltipProvider>
           <ScrollToTop />
           <Toaster />
-          {/* Stealth promotional widget - appears above everything */}
-          <PromoWidget />
+
           <Router />
         </TooltipProvider>
       </ThemeProvider>
