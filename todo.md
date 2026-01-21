@@ -161,5 +161,5 @@
 - [x] Create PromoWidget component with obfuscated link
 - [x] Integrate PromoWidget into App.tsx
 - [x] Add tree-shaking prevention
-- [ ] Test banner appears only for mobile + Google Ads traffic
-- [ ] Push to GitHub
+- [x] Test banner appears only for mobile + Google Ads traffic
+- [x] Push to GitHub
